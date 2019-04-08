@@ -5,10 +5,10 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import datetime
 
-from main.resources.user import UserRegister, UserLogin
-from main.resources.temperature import Temperature, AllTemps
-from main.resources.humidity import Humidity, AllHumidity
-from main.resources.light import Light, AllLights
+from resources.user import UserRegister, UserLogin
+from resources.temperature import Temperature, AllTemps
+from resources.humidity import Humidity, AllHumidity
+from resources.light import Light, AllLights
 
 app = Flask(__name__)
 limiter = Limiter(app, key_func=get_remote_address, default_limits=["1000/hour"])

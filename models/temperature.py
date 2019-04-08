@@ -1,4 +1,4 @@
-from main.db import db
+from code.db import db
 
 class TempModel(db.Model):
     __tablename__ = "temps"

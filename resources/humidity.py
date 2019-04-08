@@ -1,7 +1,7 @@
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import jwt_refresh_token_required, fresh_jwt_required
 
-from main.models.humidity import HumidityModel
+from models.humidity import HumidityModel
 
 class Humidity(Resource):
     parser = reqparse.RequestParser()

@@ -1,4 +1,4 @@
-from main.db import db
+from code.db import db
 
 class LightModel(db.Model):
     __tablename__ = "light"
