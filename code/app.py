@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
@@ -13,7 +15,7 @@ from resources.light import Light, AllLights
 app = Flask(__name__)
 limiter = Limiter(app, key_func=get_remote_address, default_limits=["1000/hour"])
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///data.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = datetime.timedelta(hours=2)
