@@ -26,15 +26,15 @@ api = Api(app)
 
 jwt = JWTManager(app)
 
-api.add_resource(AllTemps, "/temperature")
-api.add_resource(Temperature, "/temperature/<int:uid>")
-api.add_resource(AllHumidity, "/humidity")
-api.add_resource(Humidity, "/humidity/<int:uid>")
-api.add_resource(AllLights, "/light")
-api.add_resource(Light, "/light/<int:uid>")
+api.add_resource(AllTemps, "/api/temperature")
+api.add_resource(Temperature, "/api/temperature/<int:uid>")
+api.add_resource(AllHumidity, "/api/humidity")
+api.add_resource(Humidity, "/api/humidity/<int:uid>")
+api.add_resource(AllLights, "/api/light")
+api.add_resource(Light, "/api/light/<int:uid>")
 
-api.add_resource(UserRegister, "/register")
-api.add_resource(UserLogin, "/login")
+api.add_resource(UserRegister, "/api/register")
+api.add_resource(UserLogin, "/api/login")
 
 if __name__ == "__main__":
     from code.db import db
