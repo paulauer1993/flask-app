@@ -1,11 +1,11 @@
 import os
 
-from flask import Flask
+from flask import Flask, request, render_template
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-import datetime
+import datetime, requests
 
 from resources.user import UserRegister, UserLogin
 from resources.temperature import Temperature, AllTemps
@@ -35,6 +35,18 @@ api.add_resource(Light, "/api/light/<int:uid>")
 
 api.add_resource(UserRegister, "/api/register")
 api.add_resource(UserLogin, "/api/login")
+
+@app.route("/login", methods=["POST", "GET"])
+def form_post():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        r = requests.post("https://senzori.herokuapp.com/api/login", data={"username": username, "password": password}, headers={"Content-Type": "application/json"})
+        if r.status_code == "200":
+            return render_template("#"), 200
+        else:
+            return render_template("login.html"), 404
+
 
 if __name__ == "__main__":
     from code.db import db

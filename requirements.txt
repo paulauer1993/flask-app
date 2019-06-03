@@ -3,5 +3,6 @@ Flask-RESTful
 Flask-JWT-Extended
 Flask-Limiter
 Flask-SQLAlchemy
+requests
 uwsgi
 psycopg2
