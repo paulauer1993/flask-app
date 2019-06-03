@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, render_template, url_for, redirect
+from flask import Flask, request, render_template, url_for, redirect, session
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from flask_limiter import Limiter
@@ -38,15 +38,10 @@ api.add_resource(UserLogin, "/api/login")
 
 @app.route("/")
 def index():
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        r = requests.post("https://senzori.herokuapp.com/api/login", data={"username": username, "password": password}, headers={"Content-Type": "application/json"})
-        if r.status_code == "200":
-            return render_template("#"), 200
-        else:
-            return render_template("login.html"), 404
-    # return redirect(url_for("/login"))
+    if "username" in session:
+        return render_template("dada.html")
+
+    return redirect(url_for("login"))
 
 @app.route("/login")
 def form_post():
