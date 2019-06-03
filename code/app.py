@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for, redirect
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from flask_limiter import Limiter
@@ -35,6 +35,10 @@ api.add_resource(Light, "/api/light/<int:uid>")
 
 api.add_resource(UserRegister, "/api/register")
 api.add_resource(UserLogin, "/api/login")
+
+@app.route("/")
+def index():
+    return redirect(url_for("login"))
 
 @app.route("/login")
 def form_post():
