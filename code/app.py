@@ -38,11 +38,6 @@ api.add_resource(UserLogin, "/api/login")
 
 @app.route("/")
 def index():
-    return redirect(url_for("/login"))
-
-@app.route("/login")
-def form_post():
-    return render_template("login.html")
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -51,6 +46,12 @@ def form_post():
             return render_template("#"), 200
         else:
             return render_template("login.html"), 404
+    # return redirect(url_for("/login"))
+
+@app.route("/login")
+def form_post():
+    return render_template("login.html")
+
 
 if __name__ == "__main__":
     from code.db import db
