@@ -36,7 +36,7 @@ api.add_resource(Light, "/api/light/<int:uid>")
 api.add_resource(UserRegister, "/api/register")
 api.add_resource(UserLogin, "/api/login")
 
-@app.route("/login", methods=["POST", "GET"])
+@app.route("/login")
 def form_post():
     return render_template("login.html")
     # if request.method == "POST":
