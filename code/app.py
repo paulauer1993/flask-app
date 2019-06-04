@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, render_template, url_for, redirect, session
+from flask import Flask, request, render_template
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from flask_limiter import Limiter
@@ -40,7 +40,7 @@ api.add_resource(UserLogin, "/api/login")
 def index():
     return render_template("login.html")
 
-@app.route("/home", methods=["POST"])
+@app.route("/home", methods=["GET", "POST"])
 def form_post():
     if request.method == "POST":
         username = request.form["username"]
