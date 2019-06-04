@@ -40,7 +40,7 @@ api.add_resource(UserLogin, "/api/login")
 def index():
     return render_template("login.html")
 
-@app.route("/home", methods=["POST, GET"])
+@app.route("/home", methods=["POST"])
 def form_post():
     if request.method == "POST":
         username = request.form["username"]
