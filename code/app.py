@@ -48,8 +48,8 @@ def form_post():
         r = requests.post("https://senzori.herokuapp.com/api/login", data={"username": username, "password": password}, headers={"Content-Type": "application/json"})
         if r.status_code == "200":
             return render_template("dada.html"), 200
-        else:
-            return render_template("login.html"), 404
+
+        return render_template("login.html"), 404
 
 
 if __name__ == "__main__":
