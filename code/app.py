@@ -38,9 +38,6 @@ api.add_resource(UserLogin, "/api/login")
 
 @app.route("/")
 def index():
-    if "username" in session:
-        return render_template("dada.html")
-
     return redirect(url_for("login"))
 
 @app.route("/login")
