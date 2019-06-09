@@ -1,12 +1,12 @@
 import os
 
 from models.user import UserModel
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-import datetime, requests, json
+import datetime
 
 from resources.user import UserRegister, UserLogin
 from resources.temperature import Temperature, AllTemps
@@ -50,7 +50,7 @@ def form_post():
     if user and user.password == password:
         return render_template("#"), 200
 
-    return render_template("login_failed.html"), 400
+    return redirect(url_for("/")), render_template("login_failed.html"), 400
 
 
 if __name__ == "__main__":
