@@ -48,7 +48,7 @@ def form_post():
     user = UserModel.find_by_username(username)
 
     if user and user.password == password:
-        return render_template("#"), 200
+        return render_template("login.html"), 200
 
     return render_template("login_failed.html"), 400
 
