@@ -50,7 +50,7 @@ def form_post():
     if user and user.password == password:
         return render_template("#"), 200
 
-    return redirect(url_for("/")), render_template("login_failed.html"), 400
+    return render_template("login_failed.html"), 400
 
 
 if __name__ == "__main__":
