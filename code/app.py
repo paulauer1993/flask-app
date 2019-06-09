@@ -50,7 +50,7 @@ def form_post():
     if user and user.password == password:
         return render_template("dada.html"), 200
 
-    return 404
+    return render_template("dada.html"), 404
 
 
 if __name__ == "__main__":
