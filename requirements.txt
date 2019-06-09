@@ -4,6 +4,5 @@ Flask-JWT-Extended
 Flask-Limiter
 Flask-SQLAlchemy
 requests
-json
 uwsgi
 psycopg2
