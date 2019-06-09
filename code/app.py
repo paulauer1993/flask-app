@@ -1,5 +1,6 @@
 import os
 
+from models.user import UserModel
 from flask import Flask, request, render_template
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
@@ -40,15 +41,16 @@ api.add_resource(UserLogin, "/api/login")
 def index():
     return render_template("login.html")
 
-@app.route("/home", methods=["GET", "POST"])
+@app.route("/home", methods=[ "POST"])
 def form_post():
     username = request.form["username"]
     password = request.form["password"]
-    r = requests.post("https://senzori.herokuapp.com/api/login", data=json.dumps({"username": username, "password": password}), headers={"Content-Type": "application/json"})
-    if r.status_code == "200":
+    user = UserModel.find_by_username(username)
+
+    if user and user.password == password:
         return render_template("dada.html"), 200
 
-    return render_template("login.html"), 404
+    return 404
 
 
 if __name__ == "__main__":
