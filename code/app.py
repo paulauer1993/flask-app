@@ -40,13 +40,13 @@ api.add_resource(UserLogin, "/api/login")
 def index():
     return render_template("login.html")
 
-@app.route("/home", methods=["GET", "POST"])
+@app.route("/home", methods=["POST"])
 def form_post():
     username = request.form["username"]
     password = request.form["password"]
-    r = requests.post("https://senzori.herokuapp.com/api/login", data=json.dumps({"username": username, "password": password}, headers={"Content-Type": "application/json"}))
-    if r.status_code == "200":
-        return render_template("dada.html"), 200
+    #r = requests.post("https://senzori.herokuapp.com/api/login", data=json.dumps({"username": username, "password": password}), headers={"Content-Type": "application/json"})
+    #if r.status_code == "200":
+        #return render_template("dada.html"), 200
 
     return render_template("login.html"), 404
 
