@@ -5,7 +5,7 @@ from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-import datetime, requests
+import datetime, requests, json
 
 from resources.user import UserRegister, UserLogin
 from resources.temperature import Temperature, AllTemps
@@ -42,14 +42,13 @@ def index():
 
 @app.route("/home", methods=["GET", "POST"])
 def form_post():
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        r = requests.post("https://senzori.herokuapp.com/api/login", data={"username": username, "password": password}, headers={"Content-Type": "application/json"})
-        if r.status_code == "200":
-            return render_template("dada.html"), 200
+    username = request.form["username"]
+    password = request.form["password"]
+    r = requests.post("https://senzori.herokuapp.com/api/login", data=json.dumps({"username": username, "password": password}, headers={"Content-Type": "application/json"}))
+    if r.status_code == "200":
+        return render_template("dada.html"), 200
 
-        return render_template("login.html"), 404
+    return render_template("login.html"), 404
 
 
 if __name__ == "__main__":
