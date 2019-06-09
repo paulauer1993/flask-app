@@ -41,7 +41,7 @@ api.add_resource(UserLogin, "/api/login")
 def index():
     return render_template("login.html")
 
-@app.route("/home", methods=[ "POST"])
+@app.route("/home", methods=["POST"])
 def form_post():
     username = request.form["username"]
     password = request.form["password"]
