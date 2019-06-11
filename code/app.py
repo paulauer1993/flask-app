@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from flask_limiter import Limiter
@@ -53,11 +53,13 @@ def form_post():
 
     if user and user.password == password:
         tmp = [temp for temp in TempModel.query.all()]
-        tmp = str(tmp)
+
+        tmp = type(tmp)
         hum = [hum for hum in HumidityModel.query.all()]
         hum = str(hum)
         light = [light for light in LightModel.query.all()]
         light = str(light)
+
 
         return render_template("home.html", temp_value=tmp, hum_value=hum, light_value=light), 200
 
