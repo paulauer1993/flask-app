@@ -52,9 +52,9 @@ def form_post():
     user = UserModel.find_by_username(username)
 
     if user and user.password == password:
-        temp_value = [temp["value"]  for temp in TempModel.query.all()][-1]
-        hum_value = [hum["value"] for hum in HumidityModel.query.all()][-1]
-        light_value = [light["value"] for light in LightModel.query.all()][-1]
+        temp_value = str([temp["value"]  for temp in TempModel.query.all()][-1])
+        hum_value = str([hum["value"] for hum in HumidityModel.query.all()][-1])
+        light_value = str([light["value"] for light in LightModel.query.all()][-1])
 
         return render_template("home.html", temp_value=temp_value, hum_value=hum_value, light_value=light_value), 200
 
