@@ -54,7 +54,7 @@ def form_post():
     if user and user.password == password:
         tmp = [temp for temp in TempModel.query.all()]
 
-        tmp = type(tmp)
+        tmp = type(tmp[-1])
         hum = [hum for hum in HumidityModel.query.all()]
         hum = str(hum)
         light = [light for light in LightModel.query.all()]
