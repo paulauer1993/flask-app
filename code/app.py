@@ -59,7 +59,7 @@ def form_post():
         light = [light["value"] for light in LightModel.query.all()]
         light = str(light[-1])
 
-        return render_template("home.html", temp_value=a, hum_value=hum_value, light_value=light_value), 200
+        return render_template("home.html", temp_value=tmp, hum_value=hum, light_value=light), 200
 
     return render_template("login_failed.html"), 400
 
