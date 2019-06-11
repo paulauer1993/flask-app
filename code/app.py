@@ -52,8 +52,7 @@ def form_post():
     user = UserModel.find_by_username(username)
 
     if user and user.password == password:
-        tmp = [temp for temp in TempModel.query.all()]
-
+        tmp = [temp.json()["value"] for temp in TempModel.query.all()]
         tmp = type(tmp[-1])
         hum = [hum for hum in HumidityModel.query.all()]
         hum = str(hum)
