@@ -1,12 +1,16 @@
 import os
 
-from models.user import UserModel
 from flask import Flask, request, render_template, redirect, url_for
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import datetime
+
+from models.user import UserModel
+from models.temperature import TempModel
+from models.humidity import HumidityModel
+from models.light import LightModel
 
 from resources.user import UserRegister, UserLogin
 from resources.temperature import Temperature, AllTemps
@@ -48,7 +52,11 @@ def form_post():
     user = UserModel.find_by_username(username)
 
     if user and user.password == password:
-        return render_template("login.html"), 200
+        temp_value = [temp["value"]  for temp in TempModel.query.all()][-1]
+        hum_value = [hum["value"] for hum in HumidityModel.query.all()][-1]
+        light_value = [light["value"] for light in LightModel.query.all()][-1]
+
+        return render_template("home.html", temp_value=temp_value, hum_value=hum_value, light_value=light_value), 200
 
     return render_template("login_failed.html"), 400
 
