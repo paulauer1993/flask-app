@@ -56,7 +56,6 @@ def form_post():
         hum = str([hum.json()["value"] for hum in HumidityModel.query.all()][-1])
         light = str([light.json()["value"] for light in LightModel.query.all()][-1])
 
-
         return render_template("home.html", temp_value=tmp, hum_value=hum, light_value=light), 200
 
     return render_template("login_failed.html"), 400
