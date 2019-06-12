@@ -4,14 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Home Page</title>
+  <title>Home</title>
+  <style>
+    html, body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7em;
+      background: #333;
+    }
+
+    .box {
+      width: 32.8%;
+      display: inline-block;
+      box-sizing: border-box;
+      padding: 20px;
+      margin-bottom: 15px;
+      text-align: center;
+      margin-top: 300px;
+      color: #ffffff;
+    }
+
+    h2 {
+      font-size: 43px;
+    }
+    
+    p {
+      font-size: 30px;
+    }
+    
+  </style>
 </head>
 <body>
-  <h2>Temperature</h2>
-  <p>{{ temp_value }}</p>
-  <h2>Humidity</h2>
-  <p>{{ hum_value }}</p>
-  <h2>Light</h2>
-  <p>{{ light_value }}</p>
+  <div class="box">
+    <h2>Temperature</h2>
+    <p>{{ temp_value }}</p>
+  </div>
+  <div class="box">
+    <h2>Humidity</h2>
+    <p>{{ hum_value }}</p>
+  </div>
+  <div class="box">
+    <h2>Light</h2>
+    <p>{{ light_value }}</p>
+  </div>
 </body>
 </html>
